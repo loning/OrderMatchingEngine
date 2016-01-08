@@ -15,9 +15,21 @@ namespace OrderMatchingEngine.OrderBook
         {
             GoodUntilCancelled,
             GoodUntilDate,
+            /// <summary>
+            /// 立即成交否则取消指令
+            /// </summary>
             ImmediateOrCancel,
+            /// <summary>
+            /// 限价单
+            /// </summary>
             LimitPrice,
+            /// <summary>
+            /// 市价单
+            /// </summary>
             MarketPrice,
+            /// <summary>
+            /// 止损
+            /// </summary>
             StopLoss
         }
 
