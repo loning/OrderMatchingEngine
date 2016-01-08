@@ -9,25 +9,25 @@ namespace OrderMatchingEngine.Exchange
 {
     public class Market
     {
-        private readonly Dictionary<Instrument, OrderBook.OrderBook> m_OrderBooks;
+        private readonly Dictionary<int, OrderBook.OrderBook> m_OrderBooks;
         private readonly List<Timer> m_Timers;
         private bool m_TimersStarted;
         private readonly Object m_Locker = new Object();
 
-        public Market(IDictionary<Instrument, OrderBook.OrderBook> orderBooks, IEnumerable<Timer> timers)
+        public Market(IDictionary<int, OrderBook.OrderBook> orderBooks, IEnumerable<Timer> timers)
         {
             if (orderBooks == null) throw new ArgumentNullException("orderBooks");
 
-            m_OrderBooks = new Dictionary<Instrument, OrderBook.OrderBook>(orderBooks);
+            m_OrderBooks = new Dictionary<int, OrderBook.OrderBook>(orderBooks);
             m_Timers = new List<Timer>(timers);
             m_Timers.ForEach(t => t.Stop());
         }
 
-        public Market(IDictionary<Instrument, OrderBook.OrderBook> orderBooks)
+        public Market(IDictionary<int, OrderBook.OrderBook> orderBooks)
         {
             if (orderBooks == null) throw new ArgumentNullException("orderBooks");
 
-            m_OrderBooks = new Dictionary<Instrument, OrderBook.OrderBook>(orderBooks);
+            m_OrderBooks = new Dictionary<int, OrderBook.OrderBook>(orderBooks);
             m_Timers = new List<Timer> {OrdersPerSecondPriority()};
         }
 
@@ -89,7 +89,7 @@ namespace OrderMatchingEngine.Exchange
             }
         }
 
-        public OrderBook.OrderBook this[Instrument instrument]
+        public OrderBook.OrderBook this[int instrument]
         {
             get
             {

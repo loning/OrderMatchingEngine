@@ -6,13 +6,13 @@ namespace OrderMatchingEngine.OrderBook
 {
     public abstract class Orders : IEnumerable<Order>
     {
-        public Instrument Instrument { get; private set; }
+        public int Instrument { get; private set; }
 
         private readonly List<Order> m_Orders = new List<Order>();
         private readonly Object m_Locker = new object();
         private readonly Comparison<Order> m_OrderSorter;
 
-        protected Orders(Instrument instrument, Comparison<Order> orderSorter)
+        protected Orders(int instrument, Comparison<Order> orderSorter)
         {
             if (instrument == null) throw new ArgumentNullException("instrument");
             if (orderSorter == null) throw new ArgumentNullException("orderSorter");
@@ -110,7 +110,8 @@ namespace OrderMatchingEngine.OrderBook
         }
 
 
-        public BuyOrders(Instrument instrument) : base(instrument, HighestPriceEarliestTimePriority)
+        public BuyOrders(int instrument)
+            : base(instrument, HighestPriceEarliestTimePriority)
         {
         }
 
@@ -133,7 +134,8 @@ namespace OrderMatchingEngine.OrderBook
         }
 
 
-        public SellOrders(Instrument instrument) : base(instrument, LowestPriceEarliestTimePriority)
+        public SellOrders(int instrument)
+            : base(instrument, LowestPriceEarliestTimePriority)
         {
         }
 

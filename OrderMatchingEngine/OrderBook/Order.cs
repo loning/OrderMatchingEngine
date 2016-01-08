@@ -43,7 +43,7 @@ namespace OrderMatchingEngine.OrderBook
             CreationTime = DateTime.Now;
         }
 
-        protected Order(Instrument instrument, OrderTypes orderType, BuyOrSell buySell, Decimal price, UInt64 quantity)
+        protected Order(int instrument, OrderTypes orderType, BuyOrSell buySell, ulong price, UInt64 quantity)
             : this()
         {
             if (instrument == null) throw new ArgumentNullException("instrument");
@@ -59,7 +59,7 @@ namespace OrderMatchingEngine.OrderBook
 
         public BuyOrSell BuySell { get; private set; }
         public OrderTypes OrderType { get; private set; }
-        public Decimal Price { get; private set; }
+        public ulong Price { get; private set; }
 
         public UInt64 Quantity
         {
@@ -67,7 +67,7 @@ namespace OrderMatchingEngine.OrderBook
             set { lock (m_Locker) m_Quantity = value; }
         }
 
-        public Instrument Instrument { get; private set; }
+        public int Instrument { get; private set; }
         public DateTime CreationTime { get; private set; }
         public Int64 Id { get; private set; }
     }

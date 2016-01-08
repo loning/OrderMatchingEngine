@@ -1,9 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderMatchingEngine", "OrderMatchingEngine\OrderMatchingEngine.csproj", "{8675A129-DCDB-4340-A9C3-534017B3D207}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderMatchingEngineTests", "OrderMatchingEngineTests\OrderMatchingEngineTests.csproj", "{E68060A2-24C7-475C-B8A0-1415C1244E53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderMatchingEngine.Server", "OrderMatchingEngine.Server\OrderMatchingEngine.Server.csproj", "{2416F78D-314C-42CF-8540-1246A07BE7D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderMatchingEngine.Messages", "OrderMatchingEngine.Messages\OrderMatchingEngine.Messages.csproj", "{65684EB1-91AA-4377-9E09-1D43918D0C67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +25,14 @@ Global
 		{E68060A2-24C7-475C-B8A0-1415C1244E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E68060A2-24C7-475C-B8A0-1415C1244E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E68060A2-24C7-475C-B8A0-1415C1244E53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2416F78D-314C-42CF-8540-1246A07BE7D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2416F78D-314C-42CF-8540-1246A07BE7D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2416F78D-314C-42CF-8540-1246A07BE7D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2416F78D-314C-42CF-8540-1246A07BE7D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65684EB1-91AA-4377-9E09-1D43918D0C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65684EB1-91AA-4377-9E09-1D43918D0C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65684EB1-91AA-4377-9E09-1D43918D0C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65684EB1-91AA-4377-9E09-1D43918D0C67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

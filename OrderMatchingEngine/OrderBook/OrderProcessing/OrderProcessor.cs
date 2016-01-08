@@ -30,8 +30,18 @@ namespace OrderMatchingEngine.OrderBook.OrderProcessing
 
                 if (candidateOrder.Quantity == 0)
                     orders.Remove(candidateOrder);
-
-                trades.AddTrade(new Trade(order.Instrument, quantity, candidateOrder.Price));
+                if (order.BuySell == Order.BuyOrSell.Buy)
+                {
+                    trades.AddTrade(new Trade(order.Instrument, quantity, candidateOrder.Price,
+                        candidateOrder.Id, order.Id
+                        ));
+                }
+                else
+                {
+                    trades.AddTrade(new Trade(order.Instrument, quantity, candidateOrder.Price,
+                        order.Id, candidateOrder.Id
+                        ));
+                }
             }
             return true;
         }

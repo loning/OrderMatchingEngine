@@ -9,7 +9,7 @@ namespace OrderMatchingEngineTests.UnitTests
     internal class OrderMatchingTests
     {
         private EquityOrder m_BuyOrder, m_SellOrder;
-        private Instrument m_Instrument;
+        private int m_Instrument;
         private SellOrders m_SellOrders;
         private BuyOrders m_BuyOrders;
         private Trades m_Trades;
@@ -18,8 +18,8 @@ namespace OrderMatchingEngineTests.UnitTests
         [SetUp]
         public void Init()
         {
-            m_Instrument = new Instrument("GOOG");
-            m_BuyOrder = new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Buy, 100M,
+            m_Instrument = 1;
+            m_BuyOrder = new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Buy, 100,
                                          100ul);
             m_SellOrder = new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Sell, 90,
                                           100ul);

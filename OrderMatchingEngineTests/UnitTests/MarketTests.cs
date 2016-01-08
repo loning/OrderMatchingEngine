@@ -12,15 +12,15 @@ namespace OrderMatchingEngineTests.UnitTests
     internal class MarketTests
     {
         private Market m_Market;
-        private Instrument m_Instrument;
+        private int m_Instrument;
         private OrderBook m_OrderBook;
 
         [SetUp]
         public void Setup()
         {
-            m_Instrument = new Instrument("MSFT");
+            m_Instrument = 1;
             m_OrderBook = new OrderBook(m_Instrument);
-            var orderBooks = new Dictionary<Instrument, OrderBook>();
+            var orderBooks = new Dictionary<int, OrderBook>();
             orderBooks[m_Instrument] = m_OrderBook;
             m_Market = new Market(orderBooks);
         }
@@ -48,7 +48,7 @@ namespace OrderMatchingEngineTests.UnitTests
         {
             Assert.Throws<Market.InstrumentNotInThisMarketException>(
                 () =>
-                m_Market.SubmitOrder(new EquityOrder(new Instrument("XXXX"), Order.OrderTypes.GoodUntilCancelled,
+                m_Market.SubmitOrder(new EquityOrder(999, Order.OrderTypes.GoodUntilCancelled,
                                                      Order.BuyOrSell.Buy, 100, 100)));
         }
 
@@ -80,7 +80,7 @@ namespace OrderMatchingEngineTests.UnitTests
 
             for (int i = 0; i < 10; ++i)
             {
-                var book = new OrderBook(new Instrument("" + i));
+                var book = new OrderBook(i);
                 for (int j = 0; j < i; ++j)
                 {
                     Statistic stat = book.Statistics[Statistics.Stat.NumOrders];
@@ -90,12 +90,12 @@ namespace OrderMatchingEngineTests.UnitTests
             }
 
             Market.PrioritiseOrderBooks(orderBooks,
-                                        (x, y) => -1*x.Statistics[Statistics.Stat.NumOrders].Value.CompareTo(
+                                        (x, y) => -1 * x.Statistics[Statistics.Stat.NumOrders].Value.CompareTo(
                                             y.Statistics[Statistics.Stat.NumOrders].Value));
 
-            for(int i = 1; i < orderBooks.Count; ++i)
+            for (int i = 1; i < orderBooks.Count; ++i)
             {
-                Assert.That(orderBooks[i].Statistics[Statistics.Stat.NumOrders].Value, Is.LessThanOrEqualTo(orderBooks[i-1].Statistics[Statistics.Stat.NumOrders].Value));
+                Assert.That(orderBooks[i].Statistics[Statistics.Stat.NumOrders].Value, Is.LessThanOrEqualTo(orderBooks[i - 1].Statistics[Statistics.Stat.NumOrders].Value));
             }
         }
 
@@ -103,11 +103,11 @@ namespace OrderMatchingEngineTests.UnitTests
         {
             for (int i = 1; i < 3; ++i)
                 yield return
-                    new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Buy, i, 10ul);
+                    new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Buy, (ulong)i, 10ul);
 
             for (int i = 3; i < 5; ++i)
                 yield return
-                    new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Sell, i, 10ul);
+                    new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Sell, (ulong)i, 10ul);
         }
     }
 }

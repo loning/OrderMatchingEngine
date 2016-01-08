@@ -12,7 +12,7 @@ namespace OrderMatchingEngine.OrderBook
 
         private readonly Object m_Locker = new Object();
 
-        public Instrument Instrument { get; private set; }
+        public int Instrument { get; private set; }
         public BuyOrders BuyOrders { get; private set; }
         public SellOrders SellOrders { get; private set; }
         public Trades Trades { get; private set; }
@@ -35,7 +35,7 @@ namespace OrderMatchingEngine.OrderBook
             }
         }
 
-        public OrderBook(Instrument instrument, BuyOrders buyOrders, SellOrders sellOrders, Trades trades,
+        public OrderBook(int instrument, BuyOrders buyOrders, SellOrders sellOrders, Trades trades,
                          OrderProcessor orderProcessingStrategy)
         {
             if (instrument == null) throw new ArgumentNullException("instrument");
@@ -54,12 +54,12 @@ namespace OrderMatchingEngine.OrderBook
             Statistics = new Statistics();
         }
 
-        public OrderBook(Instrument instrument)
+        public OrderBook(int instrument)
             : this(instrument, new BuyOrders(instrument), new SellOrders(instrument), new Trades(instrument))
         {
         }
 
-        public OrderBook(Instrument instrument, BuyOrders buyOrders, SellOrders sellOrders, Trades trades)
+        public OrderBook(int instrument, BuyOrders buyOrders, SellOrders sellOrders, Trades trades)
             : this(
                 instrument, buyOrders, sellOrders, trades, new SynchronousOrderProcessor(buyOrders, sellOrders, trades))
         {

@@ -11,13 +11,13 @@ namespace OrderMatchingEngineTests.UnitTests
     [TestFixture]
     class OrderProcessorTests
     {
-        private Instrument m_Instrument;
+        private int m_Instrument;
         private OrderBook m_OrderBook;
 
         [SetUp]
         public void Init()
         {
-            m_Instrument = new Instrument("GOOG");
+            m_Instrument = 1;
             m_OrderBook = new OrderBook(m_Instrument);
         }
 
@@ -59,10 +59,10 @@ namespace OrderMatchingEngineTests.UnitTests
         private IEnumerable<Order> Orders(int numBuyOrders = 100, int numSellOrders = 100)
         {
             for (int i = 1; i <= numBuyOrders; ++i)
-               yield return new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Buy, 100m, 100ul);
+               yield return new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Buy, 100, 100ul);
 
             for (int i = 1; i <= numSellOrders; ++i)
-                yield return new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Sell, 110m, 110);
+                yield return new EquityOrder(m_Instrument, Order.OrderTypes.GoodUntilCancelled, Order.BuyOrSell.Sell, 110, 110);
 
         }
     }

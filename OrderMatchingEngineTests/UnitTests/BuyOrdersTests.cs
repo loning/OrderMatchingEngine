@@ -10,12 +10,12 @@ namespace OrderMatchingEngineTests.UnitTests
     internal class BuyOrdersTests
     {
         private BuyOrders m_BuyOrders;
-        private Instrument m_Instrument;
+        private int m_Instrument;
 
         [SetUp]
         public void Init()
         {
-            m_Instrument = new Instrument("MSFT");
+            m_Instrument = 1;
             m_BuyOrders = new BuyOrders(m_Instrument);
 
             for (int i = 0, j = 10; i < 10; ++i, ++j)
@@ -58,7 +58,7 @@ namespace OrderMatchingEngineTests.UnitTests
         [Test]
         public void WrongInstrumentThrowsException()
         {
-            var order = new EquityOrder(new Instrument("WRONG"), Order.OrderTypes.GoodUntilCancelled,
+            var order = new EquityOrder(999, Order.OrderTypes.GoodUntilCancelled,
                                         Order.BuyOrSell.Buy, 5, 10ul);
 
             Assert.Throws<ArgumentException>(() => m_BuyOrders.Insert(order));

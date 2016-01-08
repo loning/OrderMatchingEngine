@@ -9,7 +9,7 @@ namespace OrderMatchingEngineTests.UnitTests
     internal class OrderBookTests
     {
         private OrderBook m_OrderBook;
-        private Instrument m_Instrument;
+        private int m_Instrument;
         private BuyOrders m_BuyOrders;
         private SellOrders m_SellOrders;
         private Trades m_Trades;
@@ -18,7 +18,7 @@ namespace OrderMatchingEngineTests.UnitTests
         [SetUp]
         public void Init()
         {
-            m_Instrument = new Instrument("MSFT");
+            m_Instrument = 1;
             m_BuyOrders = new BuyOrders(m_Instrument);
             m_SellOrders = new SellOrders(m_Instrument);
             m_Trades = new Trades(m_Instrument);

@@ -6,17 +6,17 @@ namespace OrderMatchingEngine.OrderBook
 {
     public class Trades
     {
-        public Instrument Instrument { get; private set; }
+        public int Instrument { get; private set; }
         public TradeProcessor TradeProcessingStrategy { get; set; }
         private readonly Object m_Locker = new Object();
 
-        public Trades(Instrument instrument, TradeProcessor tradeProcessingStrategy)
+        public Trades(int instrument, TradeProcessor tradeProcessingStrategy)
         {
             Instrument = instrument;
             TradeProcessingStrategy = tradeProcessingStrategy;
         }
 
-        public Trades(Instrument instrument)
+        public Trades(int instrument)
             : this(instrument, new InMemoryTradeProcessor())
         {
         }

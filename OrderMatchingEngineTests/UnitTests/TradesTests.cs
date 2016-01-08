@@ -13,19 +13,19 @@ namespace OrderMatchingEngineTests.UnitTests
     class TradesTests
     {
         private Trades m_Trades;
-        private Instrument m_Instrument;
+        private int m_Instrument;
 
         [SetUp]
         public void Init()
         {
-            m_Instrument = new Instrument("MSFT");
+            m_Instrument = 1;
             m_Trades = new Trades(m_Instrument);
         }
 
         [Test]
         public void AddTradeTest()
         {
-            var trade = new Trade(m_Instrument, 100UL, 100.10M);
+            var trade = new Trade(m_Instrument, 100UL, 100.10M, 0, 0);
             m_Trades.AddTrade(trade);
 
             Assert.That(((Trades.InMemoryTradeProcessor)m_Trades.TradeProcessingStrategy).Trades[0], Is.EqualTo(trade));
