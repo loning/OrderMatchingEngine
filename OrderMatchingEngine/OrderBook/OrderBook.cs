@@ -63,6 +63,7 @@ namespace OrderMatchingEngine.OrderBook
             : this(
                 instrument, buyOrders, sellOrders, trades, new SynchronousOrderProcessor(buyOrders, sellOrders, trades))
         {
+
         }
 
         public void InsertOrder(Order order)

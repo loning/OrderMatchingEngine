@@ -93,8 +93,6 @@ namespace OrderMatchingEngine.Exchange
         {
             get
             {
-                if (instrument == null) throw new ArgumentNullException("instrument");
-
                 OrderBook.OrderBook orderBook;
 
                 if (m_OrderBooks.TryGetValue(instrument, out orderBook))
@@ -109,11 +107,11 @@ namespace OrderMatchingEngine.Exchange
             if (order == null) throw new ArgumentNullException("order");
 
             OrderBook.OrderBook orderBook = this[order.Instrument];
-            StartTimersOnFirstOrder();
+            //StartTimersOnFirstOrder();
             orderBook.InsertOrder(order);
         }
 
-        private void StartTimersOnFirstOrder()
+        public void StartTimersOnFirstOrder()
         {
             lock (m_Locker)
             {

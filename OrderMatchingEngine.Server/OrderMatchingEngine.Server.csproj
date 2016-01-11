@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NServiceBus.Core, Version=5.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NServiceBus.5.2.12\lib\net45\NServiceBus.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,13 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine.cs" />
+    <Compile Include="PlaceOrderHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OrderMatchingEngine.Messages\OrderMatchingEngine.Messages.csproj">
+      <Project>{65684eb1-91aa-4377-9e09-1d43918d0c67}</Project>
+      <Name>OrderMatchingEngine.Messages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OrderMatchingEngine\OrderMatchingEngine.csproj">
       <Project>{8675a129-dcdb-4340-a9c3-534017b3d207}</Project>
       <Name>OrderMatchingEngine</Name>
